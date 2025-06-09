@@ -1,17 +1,17 @@
-// 📁 src/components/TransferReasonContent.jsx
+
 import React, { useState } from 'react';
 import './TransferReasonContent.css';
-import KararnameModal from './KararnameModal';
-import GuvenlikModal from './GuvenlikModal';
-import CircleButton from './CircleButton';
-import EducationModal from './EducationModal';
-import FamilyModal from './FamilyModal';
+import CircleButton from '../../components/shared/CircleButton';
+import EducationModal from '../transfer/EducationModal';
+import FamilyModal from '../transfer/FamilyModal';
+import DecreeModal from '../../components/modals/DecreeModal';
+import SecurityModal from '../transfer/SecurityModal';
 
 function TransferReasonContent({ onStepChange, setTalepNedeni, setKararname, reason: reasonProp, setReason: setReasonProp, hideNextButton }) {
   const [localReason, localSetReason] = useState('kararname');
   const reason = reasonProp !== undefined ? reasonProp : localReason;
   const setReason = setReasonProp !== undefined ? setReasonProp : localSetReason;
-  const [step, setStep] = useState(1); // 1: Neden seçimi, 2: İçerik
+  const [step, setStep] = useState(1); 
   const [selectedKararname, setSelectedKararname] = useState('');
 
   const reasons = [
@@ -66,11 +66,11 @@ function TransferReasonContent({ onStepChange, setTalepNedeni, setKararname, rea
       )}
 
       {step === 2 && reason === 'kararname' && (
-        <KararnameModal onBack={handleBackClick} onStepChange={handleFinalNext} />
+        <DecreeModal onBack={handleBackClick} onStepChange={handleFinalNext} />
       )}
 
       {step === 2 && reason === 'guvenlik' && (
-        <GuvenlikModal onBack={handleBackClick} onStepChange={onStepChange} />
+        <SecurityModal onBack={handleBackClick} onStepChange={onStepChange} />
       )}
 
       {step === 2 && reason === 'egitim' && (

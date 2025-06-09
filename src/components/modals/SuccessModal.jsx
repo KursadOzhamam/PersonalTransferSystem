@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './SuccessModal.css';
-import { CloseButton } from './CircleButton';
+import { CloseButton } from '../shared/CircleButton';
 
 function SuccessModal({ onClose }) {
   useEffect(() => {

@@ -1,10 +1,10 @@
-// 📁 src/components/KararnameModal.jsx
+
 import React, { useState } from 'react';
-import './KararnameModal.css';
-import CircleButton from './CircleButton';
+import './DecreeModal.css';
+import CircleButton from '../shared/CircleButton';
 import { toast } from 'react-toastify';
 
-function KararnameModal({ onBack, onStepChange }) {
+function DecreeModal({ onBack, onStepChange }) {
   const [selected, setSelected] = useState('');
   const handleContinue = () => {
     if (selected) {
@@ -50,4 +50,4 @@ function KararnameModal({ onBack, onStepChange }) {
   );
 }
 
-export default KararnameModal;
+export default DecreeModal;

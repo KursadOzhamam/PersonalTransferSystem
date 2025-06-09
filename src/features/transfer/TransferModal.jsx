@@ -1,10 +1,10 @@
-// 📁 src/components/TransferModal.jsx
+
 import React, { useRef, useEffect, useState } from 'react';
 import './TransferModal.css';
 import TransferReasonContent from './TransferReasonContent';
-import ModalTabs from './ModalTabs';
+import ModalTabs from '../../components/shared/ModalTabs';
 import PreferenceModal from './PreferenceModal';
-import CircleButton from './CircleButton';
+import CircleButton from '../../components/shared/CircleButton';
 
 function TransferModal({ showModal, setShowModal, activeTab, setActiveTab, izinTipi, setIzinTipi, personName, gorevYeri, puan, gorevSuresi }) {
   const modalRef = useRef(null);
@@ -91,7 +91,7 @@ function TransferModal({ showModal, setShowModal, activeTab, setActiveTab, izinT
 
             {activeTab === 'tayin' && currentStep === 3 && (
               <PreferenceModal 
-                onBack={() => setCurrentStep(2)}
+                onBack={() => setCurrentStep(1)}
                 personName={personName}
                 gorevYeri={gorevYeri}
                 puan={puan}

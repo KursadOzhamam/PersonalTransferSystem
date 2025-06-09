@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import '../../pages/Welcome.css';
+import '../../pages/login.css';
 
 function AdminLogin() {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +13,8 @@ function AdminLogin() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === 'admin123') {
+    if (email === 'admin@admin.com' && password === 'admin123') {
+       localStorage.setItem('isAuthenticated', 'true');
       navigate('/admin/dashboard');
     } else {
       setError(true);
@@ -34,6 +36,19 @@ function AdminLogin() {
         <h5 className="form-title">Yönetici Girişi</h5>
 
         <Form className="login-form" onSubmit={handleLogin}>
+
+           <Form.Group controlId="formRegistry" className="mb-3">
+                      <Form.Label className="font-wight-custom">Email</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Mail adresinizi girin..."
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        isInvalid={error}
+                      />
+                    </Form.Group>
+
+
           <Form.Group controlId="formPassword" className="mb-1" style={{ position: 'relative' }}>
             <Form.Label className="font-wight-custom">Yönetici Şifresi</Form.Label>
             <Form.Control
@@ -69,7 +84,7 @@ function AdminLogin() {
           {error && (
             <div className="error-message">
               <span className="text-danger">
-                <strong>❗ Yanlış şifre girdiniz.</strong> Lütfen tekrar deneyin.
+                <strong>❗ Yanlış şifre veya mail adresi girdiniz.</strong> Lütfen tekrar deneyin.
               </span>
             </div>
           )}

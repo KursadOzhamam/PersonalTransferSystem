@@ -1,4 +1,3 @@
-
 # Personel Transfer Sistemi
 
 Bu proje, **personel tayin işlemlerinin yönetimini kolaylaştırmak** amacıyla **AYEP programı** çerçevesinde geliştirilmiş modern ve kullanıcı odaklı bir **web uygulamasıdır**.
@@ -10,6 +9,22 @@ Uygulama, **React**, **Vite.js**, **Bootstrap 5**, **React Router DOM v7**, **Re
 Ayrıca yöneticiler tarafından sonuçlandırılan talepler, kullanıcılara **dinamik bildirim alanları** üzerinden iletilerek sistemin işlevselliği artırılmıştır. Tüm tasarım, **responsive** prensiplere uygun biçimde hazırlanmış ve böylece masaüstü, tablet ve mobil cihazlarda sorunsuz kullanım sağlanmıştır.
 
 Proje kapsamında ayrıca **izin talepleri ekranı**, **profil görüntüleme**, **sidebar navigasyonu** gibi modüller de hazırlanmıştır. Ancak odak noktası **tayin talep süreci** olduğu için bu modüller temel bir yapıda bırakılmış, işlevsellik öncelikli olarak tayin sürecine verilmiştir. 
+
+---
+
+## 🔑 Giriş Bilgileri
+
+### 👤 Kullanıcı Girişi
+- **Sicil No:** 123456 
+- **Şifre:** Admin148*
+
+### 👨‍💼 Yönetici Girişi
+- **e-mail:** admin@admin.com
+- **Şifre:** admin123
+
+### 🔄 Şifremi Unuttum
+- **Telefon Numarası:** 1234567890
+- **Doğrulama Kodu:** 123456
 
 ---
 

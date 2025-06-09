@@ -1,4 +1,4 @@
-// 📁 src/pages/Forgot/StepOne.jsx
+
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +27,7 @@ function StepOne() {
     e.preventDefault();
     const fullCode = code.join('');
     if (fullCode === '123456') {
-      navigate('/forgot-step2'); // doğruysa yeni şifre adımına geç
+      navigate('/forgot-step2'); 
     } else {
       toast.error('Doğrulama kodu hatalı.');
     }

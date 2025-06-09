@@ -1,9 +1,9 @@
-// 📁 src/components/GuvenlikModal.jsx
-import React from 'react';
-import './GuvenlikModal.css';
-import CircleButton from './CircleButton';
 
-function GuvenlikModal({ onBack, onStepChange }) {
+import React from 'react';
+import './SecurityModal.css';
+import CircleButton from '../../components/shared/CircleButton';
+
+function SecurityModal({ onBack, onStepChange }) {
   const handleContinue = () => {
     onStepChange(3);
   };
@@ -35,4 +35,4 @@ function GuvenlikModal({ onBack, onStepChange }) {
   );
 }
 
-export default GuvenlikModal;
+export default SecurityModal;

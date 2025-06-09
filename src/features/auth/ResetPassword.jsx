@@ -1,8 +1,7 @@
-// 📁 src/pages/Forgot/ResetPassword.jsx
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './ResetPassword.css'; // Ek stil dosyası
+import './ResetPassword.css'; 
 
 function ResetPassword() {
   const [registry, setRegistry] = useState('');
@@ -10,7 +9,7 @@ function ResetPassword() {
   const navigate = useNavigate();
 
   const handleVerify = () => {
-    const cleanedPhone = phone.replace(/\D/g, ''); // Sadece sayıları al
+    const cleanedPhone = phone.replace(/\D/g, ''); 
     if (registry === '123456' && cleanedPhone === '1234567890') {
       navigate('/forgot');
     } else {

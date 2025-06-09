@@ -1,12 +1,14 @@
-// 📁 src/components/PreferenceModal.jsx
+
 import React, { useState, useRef, useEffect } from 'react';
 import './PreferenceModal.css';
-import { COURT_DATA } from '../data/COURT_DATA';
-import bamList from '../data/bam.json';
-import bimList from '../data/bim.json';
-import CircleButton from './CircleButton';
+import { COURT_DATA } from '../../data/COURT_DATA';
+import bamList from '../../data/bam.json';
+import bimList from '../../data/bim.json';
+import CircleButton from '../../components/shared/CircleButton';
+import SuccessModal from '../../components/modals/SuccessModal';
+import { toast } from 'react-toastify';
 
-function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, talepNedeni, kararname }) {
+function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, talepNedeni, kararname, closeAllModals, showSuccess, setShowSuccess }) {
   const [requestAreas, setRequestAreas] = useState({
     ilkDerece: false,
     bam: false,
@@ -49,11 +51,11 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
 
   const handleAddPreference = () => {
     if (preferences.length >= 5) {
-      alert('En fazla 5 tercih ekleyebilirsiniz.');
+      toast.error('En fazla 5 tercih ekleyebilirsiniz.');
       return;
     }
     if (!province || !district || !institution) {
-      alert('Lütfen il, ilçe ve görev yeri seçiniz.');
+      toast.error('Lütfen il, ilçe ve görev yeri seçiniz.');
       return;
     }
     const newPreference = {
@@ -72,7 +74,7 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
 
   const handleRemovePreference = (id) => {
     if (preferences.length <= 1) {
-      alert('En az bir tercih olmalı.');
+      toast.error('En az bir tercih olmalı.');
       return;
     }
     setPreferences(preferences.filter(pref => pref.id !== id));
@@ -102,15 +104,35 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
 
   const handleSubmit = () => {
     if (preferences.length === 0) {
-      alert('Lütfen en az bir tercih ekleyin.');
+      toast.error('Lütfen en az bir tercih ekleyin.');
       return;
     }
-
-    // Burada form gönderme işlemi yapılacak
-    console.log({
+    const sicil = localStorage.getItem('sicil') || '';
+    const newApplication = {
+      id: Date.now(),
+      personName,
+      gorevYeri,
+      puan,
+      gorevSuresi,
+      talepNedeni,
+      kararname,
       preferences,
-      requestAreas
+      requestAreas,
+      createdAt: new Date().toISOString(),
+      sicil,
+      status: 'pending'
+    };
+    const prev = JSON.parse(localStorage.getItem('applications') || '[]');
+    const updatedApplications = [newApplication, ...prev];
+    localStorage.setItem('applications', JSON.stringify(updatedApplications));
+
+    // Dispatch custom event
+    const event = new CustomEvent('transferRequestUpdated', {
+      detail: { applications: updatedApplications }
     });
+    window.dispatchEvent(event);
+
+    setShowSuccess(true);
   };
 
   // Gerekli alanlar dolu mu kontrolü
@@ -142,49 +164,62 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
           className="back-btn me-3"
         />
         <span className="badge top-fix">Mevcut görev yeri: Kahramankazan Adalet Sarayı</span>
-        <CircleButton
-          icon="src/assets/iconpack/close-cricle.svg"
-          alt="Kapat"
-          onClick={onBack}
-          className="close-btn modal-close"
-        />
+
       </div>
 
       <div className="scrollable-content responsive-order gap-5">
         <div className="section section-bolge">
           <h5 className='bg-light p-3 rounded-4 d-block'>Başvuru Bölgesi Seçiniz</h5>
-          <label>
-            <input 
-              type="radio" 
-              name="bolge" 
+
+          <div className='d-flex align-items-center gap-2 mb-3'>
+            <input
+              id='ilkDerece'
+              style={{ width: '20px', height: '20px' }}
+              type="radio"
+              name="bolge"
               checked={requestAreas.ilkDerece}
               onChange={() => setRequestAreas({ ilkDerece: true, bam: false, bim: false })}
-            /> 
-            Adli Yargı İlk Derece Mahkemesi
-          </label>
-          <label>
-            <input 
-              type="radio" 
-              name="bolge" 
+            />
+            <label for="ilkDerece">
+
+              Adli Yargı İlk Derece Mahkemesi
+            </label>
+          </div>
+          <div className='d-flex align-items-center gap-2 mb-3'>
+            <input
+              id='bam'
+              style={{ width: '20px', height: '20px' }}
+              type="radio"
+              name="bolge"
               checked={requestAreas.bam}
               onChange={() => setRequestAreas({ ilkDerece: false, bam: true, bim: false })}
-            /> 
-            Bölge Adliye Mahkemesi
-          </label>
-          <label>
-            <input 
-              type="radio" 
-              name="bolge" 
+            />
+            <label for="bam">
+
+              Bölge Adliye Mahkemesi
+            </label>
+          </div>
+
+          <div className='d-flex align-items-center gap-2 mb-3'>
+            <input
+              id='bim'
+              style={{ width: '20px', height: '20px' }}
+              type="radio"
+              name="bolge"
               checked={requestAreas.bim}
               onChange={() => setRequestAreas({ ilkDerece: false, bam: false, bim: true })}
-            /> 
-            Bölge İdare Mahkemesi
-          </label>
+            />
+            <label for="bim">
+
+              Bölge İdare Mahkemesi
+            </label>
+          </div>
+
         </div>
         <div className="section section-ililce">
           <h5 className='bg-light p-3 rounded-4 d-block'>İl, İlçe ve Görev Yeri Tercihi</h5>
-          <select 
-            value={province} 
+          <select
+            value={province}
             onChange={(e) => {
               setProvince(e.target.value);
               setDistrict('');
@@ -196,9 +231,9 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
               <option key={p} value={p}>{p}</option>
             ))}
           </select>
-          
-          <select 
-            value={district} 
+
+          <select
+            value={district}
             onChange={(e) => {
               setDistrict(e.target.value);
               setInstitution('');
@@ -210,9 +245,9 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
               <option key={d} value={d}>{d}</option>
             ))}
           </select>
-          
-          <select 
-            value={institution} 
+
+          <select
+            value={institution}
             onChange={(e) => setInstitution(e.target.value)}
             disabled={!district}
           >
@@ -221,66 +256,73 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
               <option key={inst} value={inst}>{inst}</option>
             ))}
           </select>
-          <div>
-          <div className="ek-ekle-row">
-          <textarea 
-            placeholder="Mazeret Açıklaması ve Ekler"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-          <div className="d-flex align-items-center justify-content-center gap-3 mt-3 position-relative">
-            <CircleButton
-              icon="src/assets/iconpack/paperclip-alt-svgrepo-com.svg"
-              alt="Ek Ekle"
-              onClick={() => alert('Ek dosya ekleme yakında!')}
-              className="position-absolute  start-0"
-            />
-            <CircleButton
-              icon="src/assets/iconpack/plus-circle-svgrepo-com.svg"
-              alt="Ekle"
-              onClick={handleAddPreference}
-              className="position-absolute end-0"
-            />
+          <div className='w-100'>
+            <div className="ek-ekle-row">
+              <div className='w-100 mb-5'>
+                <h5 className='bg-light p-3 rounded-4 d-block'>Mazeret Açıklaması ve Ekler</h5>
+                <textarea
+                  placeholder="Mazeret Açıklaması ve Ekler"
+                  value={note}
+                  rows={3}
+                  onChange={(e) => setNote(e.target.value)}
+                />
+              </div>
+              <div className="d-flex align-items-center justify-content-center gap-3 mt-3 position-relative">
+                <CircleButton
+                  icon="src/assets/iconpack/paperclip-alt-svgrepo-com.svg"
+                  alt="Ek Ekle"
+                  onClick={() => toast.info('Ek dosya ekleme yakında!')}
+                  className="position-absolute  start-0"
+                />
+                <CircleButton
+                  icon="src/assets/iconpack/plus-circle-svgrepo-com.svg"
+                  alt="Ekle"
+                  onClick={handleAddPreference}
+                  className="position-absolute end-0"
+                />
+              </div>
+            </div>
           </div>
+
         </div>
-          </div>
-          
-        </div>
-        
+
         <div className="section section-tercihler my-5">
-          <h5 className='bg-light p-3 rounded-4 d-block'>Tercih Listesi</h5>
           {preferences.length > 0 && (
-            <div className="preference-list">
-              {preferences.map((pref, index) => (
-                <div key={pref.id} className="preference-item">
-                  <span>{pref.institution}</span>
-                  <button onClick={() => handleRemovePreference(pref.id)}>Sil</button>
-                </div>
-              ))}
-            </div>
+            <>
+              <h5 className='bg-light p-3 rounded-4 d-block'>Tercih Listesi</h5>
+              <div className="tercih-listesi-border">
+                <ul
+                  className="preference-list style-none d-flex flex-column gap-2 align-items-start justify-content-center"
+                  ref={listRef}
+                >
+                  {preferences.map((pref, index) => (
+                    <li
+                      key={pref.id}
+                      className={`preference-item bg-light p-3 rounded-3 shadow-sm d-flex align-items-center gap-2 w-100${draggedIndex === index ? ' dragging' : ''}`}
+                      draggable
+                      onDragStart={() => handleDragStart(index)}
+                      onDragOver={(e) => { e.preventDefault(); handleDragOver(index); }}
+                      onDragEnd={handleDragEnd}
+                      tabIndex={0}
+                      onKeyDown={e => {
+                        if (e.key === 'ArrowUp') movePreference(index, -1);
+                        if (e.key === 'ArrowDown') movePreference(index, 1);
+                      }}
+                      style={{ cursor: 'grab', transition: 'box-shadow 0.2s, background 0.2s' }}
+                    >
+                      <span className="flex-grow-1">{index + 1}- {pref.institution}</span>
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => handleRemovePreference(pref.id)}
+                      >
+                        ×
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
           )}
-          <div className="preference-add">
-            <input
-              type="text"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              placeholder="Mazeret Açıklaması ve Ekler"
-            />
-            <div className="d-flex align-items-center justify-content-center gap-3 mt-3 position-relative">
-              <CircleButton
-                icon="src/assets/iconpack/paperclip-alt-svgrepo-com.svg"
-                alt="Ek Ekle"
-                onClick={() => alert('Ek dosya ekleme yakında!')}
-                className="position-absolute  start-0"
-              />
-              <CircleButton
-                icon="src/assets/iconpack/plus-circle-svgrepo-com.svg"
-                alt="Ekle"
-                onClick={handleAddPreference}
-                className="position-absolute end-0"
-              />
-            </div>
-          </div>
         </div>
         <div className="section section-ozet">
           <h5 className='bg-light p-3 rounded-4 d-block'>Talep Özeti</h5>
@@ -294,7 +336,9 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
             <li>Son Görev Mahallinde Geçen Süre: {gorevSuresi}</li>
           </ul>
         </div>
-        <p className="note dipnot">* Talep özeti hatalıysa önceki adıma dönüp tekrar kontrol ediniz.</p>
+        <p className="note dipnot">*Talep özetinde hatalı bilgi olduğunu düşünüyorsanız geri butonuna tıklayarak düzeltme yapınız.
+
+          *Memuriyet puan bilgisi ve görev mahallinde geçen sürede hata olduğunu düşünüyorsanız bağlı bulunduğunuz komisyon başkanlığı ile iletişime geçiniz.</p>
         <div className="d-flex justify-content-end mt-4 devam-btn-row">
           {preferences.length > 0 && (
             <CircleButton
@@ -306,6 +350,9 @@ function PreferenceModal({ onBack, personName, gorevYeri, puan, gorevSuresi, tal
           )}
         </div>
       </div>
+      {showSuccess && (
+        <SuccessModal onClose={closeAllModals} />
+      )}
     </div>
   );
 }

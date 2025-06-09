@@ -1,6 +1,6 @@
 import React from 'react';
-import './GuvenlikModal.css';
-import CircleButton from './CircleButton';
+import './SecurityModal.css';
+import CircleButton from '../../components/shared/CircleButton';
 
 function EducationModal({ onBack, onStepChange }) {
   const handleContinue = () => {

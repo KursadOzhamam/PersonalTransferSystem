@@ -1,11 +1,11 @@
-// 📁 src/pages/Welcome.jsx
+
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './Welcome.css';
+import './login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-function Welcome() {
+function Login() {
   const [registry, setRegistry] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -15,6 +15,8 @@ function Welcome() {
   const handleLogin = (e) => {
     e.preventDefault();
     if (registry === '123456' && password === 'Admin148*') {
+
+       localStorage.setItem('isAuthenticated', 'true');
       navigate('/personnel-info');
     } else {
       setError(true);
@@ -131,4 +133,4 @@ function Welcome() {
   );
 }
 
-export default Welcome;
+export default Login;

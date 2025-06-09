@@ -25,7 +25,7 @@ function AdminDashboard() {
       const newApplications = event.detail.applications;
       setRequests(newApplications);
       localStorage.setItem('applications', JSON.stringify(newApplications));
-      
+
       // Yeni başvuru bildirimi
       const latestApplication = newApplications[0];
       if (latestApplication) {
@@ -59,7 +59,7 @@ function AdminDashboard() {
     updated[index] = updatedApp;
     setRequests(updated);
     localStorage.setItem('applications', JSON.stringify(updated));
-    
+
     // Create a new notification with application details
     const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
     const newNotification = {
@@ -74,13 +74,13 @@ function AdminDashboard() {
       read: false,
       applicationId: updatedApp.id
     };
-    
+
     notifications.unshift(newNotification);
     localStorage.setItem('notifications', JSON.stringify(notifications));
-    
+
     // Trigger notification event
     window.dispatchEvent(new Event('applicationStatusChanged'));
-    
+
     toast.success(`Başvuru ${newStatus === 'approved' ? 'onaylandı' : 'reddedildi'}!`);
   };
 
@@ -114,7 +114,10 @@ function AdminDashboard() {
           </div>
         </nav>
         <div className="d-flex flex-column align-items-center gap-5 my-5">
-          <div className="nav-icon">
+          <div className="nav-icon" onClick={() => {
+            localStorage.removeItem('isAuthenticated');
+            window.location.href = '/admin';
+          }}>
             <img src="/src/assets/iconpack/fi_126467.svg" alt="User" />
           </div>
           <div className="bottom-avatar">
@@ -172,13 +175,13 @@ function AdminDashboard() {
                   </div>
                   {(!app.status || app.status === 'pending') && (
                     <div className="d-flex gap-2">
-                      <button 
+                      <button
                         className="btn btn-success btn-sm"
                         onClick={() => handleStatusChange(i, 'approved')}
                       >
                         Onayla
                       </button>
-                      <button 
+                      <button
                         className="btn btn-danger btn-sm"
                         onClick={() => handleStatusChange(i, 'rejected')}
                       >

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding-top: 60px; /* Mesaj ikonunun altında konumlanması için */
+  padding-top: 60px; 
 }
 
 .message-dropdown-box {

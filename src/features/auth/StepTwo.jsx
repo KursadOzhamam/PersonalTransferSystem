@@ -1,4 +1,4 @@
-// 📁 src/pages/Forgot/StepTwo.jsx
+
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './StepTwo.css';
@@ -20,7 +20,7 @@ function StepTwo() {
     hasLower: /[a-z]/.test(password),
     hasDigit: /\d/.test(password),
     hasSymbol: /[^A-Za-z0-9]/.test(password),
-    notRepeat: !/(.)\1{2,}/.test(password), // aynı karakter 3+ kez tekrar etmemeli
+    notRepeat: !/(.)\1{2,}/.test(password),
     notRegistry: !password.includes(registry),
   };
 

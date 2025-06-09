@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './PersonnelInfo.css';
-import TransferModal from '../components/TransferModal';
+import TransferModal from '../features/transfer/TransferModal';
 import menuIcon from '../assets/iconpack/menuicon.svg';
 import searchIcon from '../assets/iconpack/search.svg';
-import MobileSearchModal from '../components/MobileSearchModal';
-import MessageModal from '../components/MessageModal';
-import AlertModal from '../components/AlertModal';
-import MessageDropdown from '../components/MessageDropdown';
-import AlertDropdown from '../components/AlertDropdown';
+import MobileSearchModal from '../components/modals/MobileSearchModal';
+import MessageModal from '../components/modals/MessageModal';
+import AlertModal from '../components/modals/AlertModal';
+import MessageDropdown from '../components/modals/MessageDropdown';
+import AlertDropdown from '../components/modals/AlertDropdown';
 import notificationIcon from '../assets/iconpack/Notification-1.svg';
 import { toast } from 'react-toastify';
 
@@ -42,7 +42,7 @@ function PersonnelInfo() {
       setApplications(data);
       setPersonName(localStorage.getItem('personName') || 'Kürşad Şükrü Özhamam');
       setJobTitle(localStorage.getItem('jobTitle') || '');
-      setSicil(localStorage.getItem('sicil') || '');
+      setSicil(localStorage.getItem('sicil') || '123456');
     };
 
     loadData();
@@ -60,9 +60,21 @@ function PersonnelInfo() {
       setUnreadCount(updatedNotifications.filter(n => !n.read).length);
     };
 
+
+    // Tercih gönderildiğinde başvuruları güncelle
+    const handleTransferUpdate = (e) => {
+      const updatedApps = e.detail.applications;
+      setApplications(updatedApps);
+    };
+
+
     window.addEventListener('applicationStatusChanged', handleStatusChange);
+    window.addEventListener('transferRequestUpdated', handleTransferUpdate);
+
     return () => {
       window.removeEventListener('applicationStatusChanged', handleStatusChange);
+      window.removeEventListener('transferRequestUpdated', handleTransferUpdate);
+
     };
   }, []);
 
@@ -147,9 +159,15 @@ function PersonnelInfo() {
           </div>
         </nav>
         <div className="d-flex flex-column align-items-center gap-5 my-5">
-          <div className="nav-icon">
+          <div className="nav-icon d-flex align-items-center gap-2"
+            onClick={() => {
+              localStorage.removeItem('isAuthenticated');
+              window.location.href = '/';
+            }}
+          >
             <img src="src/assets/iconpack/fi_126467.svg" alt="User" />
           </div>
+
           <div className="bottom-avatar">
             <img src="/avatar.jpg" alt="User" />
           </div>
@@ -168,10 +186,10 @@ function PersonnelInfo() {
               <img src="src/assets/iconpack/Search-icon.svg" alt="" />
             </div>
             <div>
-              <img 
-                src="src/assets/iconpack/messages-badge-1.svg" 
-                alt="" 
-                onClick={() => setShowMessageDropdown(true)} 
+              <img
+                src="src/assets/iconpack/messages-badge-1.svg"
+                alt=""
+                onClick={() => setShowMessageDropdown(true)}
                 style={{ cursor: 'pointer' }}
               />
             </div>
@@ -248,7 +266,7 @@ function PersonnelInfo() {
           <button className="personnel-see-all-btn btn btn-link p-0">Tümünü gör</button>
         </div>
 
-        
+
 
         {/* Talepler Listesi */}
         <section className="personnel-requests">
@@ -257,7 +275,7 @@ function PersonnelInfo() {
           ) : (
             applications.map((app, i) => (
               <div className="personnel-request-item d-flex align-items-center justify-content-between px-3 py-3 border-bottom" key={i}>
-                
+
                 {/* Talep Türü */}
                 <div className="personnel-request-type d-flex align-items-start gap-3 flex-grow-1">
                   <img
@@ -314,7 +332,7 @@ function PersonnelInfo() {
 
       {/* Mobil mesaj ve arama butonları */}
       <div className="mobile-floating-btns">
-      {/* Mobil Search Button */}
+        {/* Mobil Search Button */}
         <button
           className="mobile-search-btn"
           onClick={() => setShowSearchModal(true)}

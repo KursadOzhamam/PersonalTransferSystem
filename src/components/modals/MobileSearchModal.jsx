@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './MobileSearchModal.css';
-import '../pages/PersonnelInfo.css';     
-import { CloseButton } from './CircleButton';
-import searchIcon from '../assets/iconpack/search.svg';
+import '../../pages/PersonnelInfo.css';     
+import { CloseButton } from '../shared/CircleButton';
+import searchIcon from '../../assets/iconpack/search.svg';
 
 function MobileSearchModal({ onClose }) {
   const [query, setQuery] = useState('');
