@@ -54,7 +54,7 @@ Proje kapsamında ayrıca **izin talepleri ekranı**, **profil görüntüleme**,
 ## 📦 Kurulum
 
 ```bash
-git clone [proje-url]
+git clone [(https://github.com/KursadOzhamam/PersonalTransferSystem.git)]
 cd personel-transfers
 npm install
 npm run dev
@@ -67,7 +67,7 @@ npm run dev
 ```
 src/
 ├── assets/          # İkonlar ve görseller
-├── components/      # Ortak bileşenler
+├── components/modals# Ortak bileşenler
 ├── data/            # JSON veri dosyaları
 ├── pages/           # Giriş, şifre sıfırlama vb. sayfalar
 ├── views/           # Profil, talepler, izinler vb.
