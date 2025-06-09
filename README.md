@@ -1,173 +1,114 @@
+
 # Personel Transfer Sistemi
 
-Bu proje, personel transfer işlemlerini yönetmek için geliştirilmiş modern bir web uygulamasıdır. React ve Vite kullanılarak oluşturulmuştur.
+Bu proje, **personel tayin işlemlerinin yönetimini kolaylaştırmak** amacıyla **AYEP programı** çerçevesinde geliştirilmiş modern ve kullanıcı odaklı bir **web uygulamasıdır**.
+
+Tayin talebinde bulunan personelin, **anlaşılır ve sade bir arayüz (UI/UX)** ile işlemlerini hızlı, rahat ve adım adım gerçekleştirebilmesi hedeflenmiştir.
+
+Uygulama, **React**, **Vite.js**, **Bootstrap 5**, **React Router DOM v7**, **React Toastify** ve **ESLint** gibi modern teknolojiler kullanılarak geliştirilmiştir. Bu sayede sadece kullanıcı dostu bir deneyim sunulmakla kalmayıp, aynı zamanda **tayin taleplerinin dijital ortamda iletilmesi**, ilgili birimlerce **görüntülenmesi**, **onaylanması veya reddedilmesi** gibi süreçler de eksiksiz şekilde dijitalleştirilmiştir.
+
+Ayrıca yöneticiler tarafından sonuçlandırılan talepler, kullanıcılara **dinamik bildirim alanları** üzerinden iletilerek sistemin işlevselliği artırılmıştır. Tüm tasarım, **responsive** prensiplere uygun biçimde hazırlanmış ve böylece masaüstü, tablet ve mobil cihazlarda sorunsuz kullanım sağlanmıştır.
+
+Proje kapsamında ayrıca **izin talepleri ekranı**, **profil görüntüleme**, **sidebar navigasyonu** gibi modüller de hazırlanmıştır. Ancak odak noktası **tayin talep süreci** olduğu için bu modüller temel bir yapıda bırakılmış, işlevsellik öncelikli olarak tayin sürecine verilmiştir. 
+
+---
 
 ## 🚀 Özellikler
 
-- Modern ve kullanıcı dostu arayüz
-- Responsive tasarım
-- Bootstrap ve React Bootstrap entegrasyonu
-- Toast bildirimleri
-- React Router ile sayfa yönetimi
-- İkon desteği (Bootstrap Icons, React Icons, SVGrepo)
+- Modern ve responsive kullanıcı arayüzü  
+- Tayin talebi oluşturma, gerekçe seçimi ve tercih işlemleri  
+- Bildirim sistemi ile kullanıcı bilgilendirmesi  
+- Yöneticiler için onaylama, reddetme ve sonuçlandırma modülleri  
+- React Router ile çoklu sayfa yönetimi  
+- Bootstrap tabanlı tasarım altyapısı  
+- Mobil uyumlu ve sade kullanıcı deneyimi  
 
-## 🛠️ Teknolojiler
+---
 
-- React 19
-- Vite 6
-- Bootstrap 5
-- React Router DOM 7
-- React Toastify
-- ESLint
+## 🛠️ Kullanılan Teknolojiler
+
+- **React 19**  
+- **Vite 6**  
+- **Bootstrap 5**  
+- **React Router DOM v7**  
+- **React Toastify**  
+- **ESLint**
+
+---
 
 ## 📦 Kurulum
 
-1. Projeyi klonlayın:
 ```bash
 git clone [proje-url]
-```
-
-2. Proje dizinine gidin:
-```bash
 cd personel-transfers
-```
-
-3. Bağımlılıkları yükleyin:
-```bash
 npm install
-```
-
-4. Geliştirme sunucusunu başlatın:
-```bash
 npm run dev
 ```
+
+---
 
 ## 🏗️ Proje Yapısı
 
 ```
 src/
-├── assets/        # Statik dosyalar (resimler, fontlar vb.)
-├── components/    # Yeniden kullanılabilir bileşenler
-├── data/         # Veri dosyaları
-├── pages/        # Sayfa bileşenleri
-├── views/        # Görünüm bileşenleri
-├── App.jsx       # Ana uygulama bileşeni
-├── main.jsx      # Uygulama giriş noktası
-└── index.css     # Global stil dosyası
+├── assets/          # İkonlar ve görseller
+├── components/      # Ortak bileşenler
+├── data/            # JSON veri dosyaları
+├── pages/           # Giriş, şifre sıfırlama vb. sayfalar
+├── views/           # Profil, talepler, izinler vb.
+├── App.jsx          # Ana bileşen
+├── main.jsx         # Başlatıcı dosya
+└── index.css        # Global stiller
 ```
+
+---
 
 ## 🚀 Kullanılabilir Komutlar
 
-- `npm run dev`: Geliştirme sunucusunu başlatır
-- `npm run build`: Projeyi production için derler
-- `npm run preview`: Derlenmiş projeyi önizleme
-- `npm run lint`: ESLint ile kod kontrolü
+| Komut            | Açıklama                            |
+|------------------|--------------------------------------|
+| `npm run dev`    | Geliştirme sunucusunu başlatır       |
+| `npm run build`  | Production için projeyi derler       |
+| `npm run preview`| Derlenmiş projeyi önizler            |
+| `npm run lint`   | ESLint ile kod kalitesi kontrolü     |
 
-## 🔧 Geliştirme
+---
 
-1. Yeni bir özellik eklemek için:
-   - İlgili bileşeni `components/` dizinine ekleyin
-   - Gerekirse yeni bir sayfa oluşturun
-   - Stil dosyalarını güncelleyin
+## 🧩 Ana Modüller
 
-2. Kod kalitesi için:
-   - ESLint kurallarına uyun
-   - Bileşenleri modüler tutun
-   - Props ve state yönetimini dikkatli yapın
+### 👤 Personel Bilgi Yönetimi
+- Detaylı profil bilgisi
+- Eğitim, aile ve tercih bilgileri
 
-## 📝 Lisans
+### 🔄 Transfer Süreci
+- Tayin talebi oluşturma
+- Gerekçe ve kararname seçimi
+- Tercih bilgileri yönetimi
+- Talep durumu takibi
 
-Bu proje [MIT lisansı](LICENSE) altında lisanslanmıştır.
+### 🔔 Bildirimler
+- Başarı ve hata bildirimleri
+- Yönetici onay/ret bildirimi
+- Mobil uyumlu toast mesajları
 
-## 👥 Katkıda Bulunma
+### 💻 Arayüz Bileşenleri
+- `PersonnelInfo`, `TransferModal`, `PreferenceModal`, `SuccessModal`, `AlertModal`  
+- `CircleButton`, `ModalTabs`, `MobileSearchModal`
 
-1. Bu depoyu fork edin
-2. Yeni bir branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'feat: Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Pull Request oluşturun
+---
 
-## 📋 Proje Detayları
+## 📱 Mobil Uyumluluk
 
-### 🎯 Temel Özellikler ve Modüller
+- Responsive tasarım  
+- Dokunmatik uyumlu bileşenler  
+- Her ekran boyutunda erişilebilir yapı  
 
-1. **Personel Bilgi Yönetimi**
-   - Personel detaylı bilgi görüntüleme
-   - Eğitim bilgileri yönetimi
-   - Aile bilgileri yönetimi
-   - Tercih bilgileri yönetimi
+---
 
-2. **Transfer İşlemleri**
-   - Transfer talebi oluşturma
-   - Transfer nedenleri yönetimi
-   - Kararname işlemleri
-   - Transfer durumu takibi
+## 📋 Katkıda Bulunma
 
-3. **Bildirim Sistemi**
-   - Alert bildirimleri
-   - Mesaj bildirimleri
-   - Başarı bildirimleri
-   - Mobil uyumlu bildirimler
-
-4. **Arayüz Bileşenleri**
-   - Responsive tasarım
-   - Modal pencereler
-   - Sekme tabanlı arayüzler
-   - Özel butonlar ve formlar
-
-### 🔄 İş Akışı
-
-1. **Personel Girişi**
-   - Personel bilgilerinin görüntülenmesi
-   - Eğitim ve aile bilgilerinin yönetimi
-   - Tercih bilgilerinin güncellenmesi
-
-2. **Transfer Süreci**
-   - Transfer talebi oluşturma
-   - Transfer nedenlerinin belirtilmesi
-   - Kararname işlemlerinin yönetimi
-   - Transfer durumunun takibi
-
-3. **Bildirim Yönetimi**
-   - Sistem bildirimlerinin görüntülenmesi
-   - Mesajların yönetimi
-   - Alert bildirimlerinin takibi
-
-### 🎨 Kullanıcı Arayüzü
-
-1. **Ana Bileşenler**
-   - `PersonnelInfo`: Personel bilgi görüntüleme
-   - `TransferModal`: Transfer işlemleri
-   - `PreferenceModal`: Tercih yönetimi
-   - `AlertModal`: Bildirim yönetimi
-
-2. **Yardımcı Bileşenler**
-   - `CircleButton`: Özel buton tasarımı
-   - `ModalTabs`: Sekme tabanlı arayüz
-   - `MobileSearchModal`: Mobil arama
-   - `SuccessModal`: Başarı bildirimleri
-
-3. **Stil ve Tasarım**
-   - Bootstrap tabanlı responsive tasarım
-   - Özel CSS modülleri
-   - Modern ve kullanıcı dostu arayüz
-   - Mobil uyumlu bileşenler
-
-### 🔒 Güvenlik ve Doğrulama
-
-1. **Kullanıcı Doğrulama**
-   - Güvenlik modalı
-   - Şifre sıfırlama
-   - Oturum yönetimi
-
-2. **Veri Doğrulama**
-   - Form doğrulamaları
-   - Veri bütünlüğü kontrolleri
-   - Hata yönetimi
-
-### 📱 Mobil Uyumluluk
-
-- Responsive tasarım
-- Mobil özel bileşenler
-- Touch-friendly arayüz
-- Mobil bildirimler
+1. Fork'layın  
+2. Yeni bir branch oluşturun: `git checkout -b feature/ozellik`  
+3. Commit yapın: `git commit -m 'feat: yeni özellik'`  
+4. Branch'i push edin: `git push origin feature/ozellik`  
+5. Pull Request gönderin  
