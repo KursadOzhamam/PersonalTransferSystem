@@ -1,0 +1,27 @@
+/* Tablonun dış hatlarını yumuşat */
+.leaves-table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+/* Satır yapısı */
+.leaves-row {
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.leaves-row td {
+  border: none !important;
+  padding: 16px 18px !important;
+  vertical-align: middle;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.leaves-row:hover {
+  transform: scale(1.01);
+  background-color: #f8f9fa;
+}
+

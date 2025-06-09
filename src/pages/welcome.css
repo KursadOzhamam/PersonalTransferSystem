@@ -1,0 +1,154 @@
+/* 📁 src/pages/Welcome.css */
+
+.welcome-wrapper {
+  display: flex;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.welcome-left {
+  width: 50%;
+  background: linear-gradient(to bottom right, #af0000, #810000);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-logo {
+  max-width: 400px;
+  margin: 0 auto 2rem;
+}
+
+.welcome-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.welcome-desc {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.welcome-right {
+  width: 50%;
+  background: white;
+  padding: 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-logo {
+  max-width: 130px;
+  margin: 0 auto 1rem;
+}
+
+.form-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  opacity: .8;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-form input::placeholder {
+  font-size: 0.9rem;
+}
+
+.error-message {
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  color: #dc3545;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.login-btn {
+  background-color: #2e69ff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 10px;
+  margin-top: 5px;
+}
+.font-wight-custom {
+  font-weight: 200;
+}
+.divider {
+  text-align: center;
+  margin: 2rem 0 1rem;
+  font-size: 0.85rem;
+  color: #888;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  display: inline-block;
+  width: 10%;
+  height: 1px;
+  background: #ccc;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.login-alternatives {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* 🔻 RESPONSIVE BREAKPOINT - MOBILE <768px */
+@media (max-width: 767px) {
+  .welcome-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .welcome-left {
+    display: none;
+  }
+
+  .welcome-right {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .login-form {
+    max-width: 100%;
+  }
+
+  .form-title {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-logo {
+    max-width: 60px;
+  }
+
+  .login-alternatives {
+    flex-direction: column;
+  }
+
+  .login-alternatives button {
+    width: 100%;
+  }
+
+  .login-btn {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,29 @@
+.notification-details {
+  background-color: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+
+.notification-details p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notification-details strong {
+  color: #333;
+  min-width: 120px;
+  font-weight: 600;
+}
+
+.notification-item.unread .notification-details {
+  background-color: #e9ecef;
+}
+
+.notification-item.unread .notification-details strong {
+  color: #0d6efd;
+} 

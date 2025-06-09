@@ -1,0 +1,80 @@
+.mobile-message-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.18);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.mobile-message-modal-box {
+  background: #fff;
+  border-radius: 2.5rem 2.5rem 0 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 40vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  animation: slide-up-modal 0.35s cubic-bezier(.4, 1.6, .6, 1) both;
+}
+
+@keyframes slide-up-modal {
+  from {
+    transform: translateY(100%);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-message-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 20vh;
+}
+
+.mobile-message-empty {
+  font-size: 1.2rem;
+  color: #888;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.mobile-message-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .mobile-message-modal-box {
+    padding: 1.2rem 1rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+  .mobile-message-empty {
+    font-size: 1.1rem;
+  }
+  .mobile-message-close {
+    top: 0.7rem;
+    right: 0.7rem;
+    font-size: 1.7rem;
+  }
+} 

@@ -1,0 +1,69 @@
+.circle-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.circle-btn img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sadece köşe butonları için siyah zemin ve beyaz ikon */
+.circle-btn.back-btn,
+.circle-btn.next-btn,
+.circle-btn.close-btn {
+    background: #000;
+}
+.circle-btn.back-btn img,
+.circle-btn.next-btn img,
+.circle-btn.close-btn img {
+    filter: invert(1);
+}
+
+/* Geri butonu - Sol üst köşe */
+.circle-btn.back-btn {
+    top: 2rem;
+    left: 2rem;
+}
+
+/* İleri butonu - Sağ alt köşe */
+.circle-btn.next-btn {
+    bottom: 2rem;
+    right: 2rem;
+}
+
+/* Kapat butonu - Sağ üst köşe */
+.circle-btn.close-btn {
+    top: 2rem;
+    right: 2rem;
+}
+
+@media (max-width: 992px) {
+  .circle-btn.next-btn {
+    position: fixed !important;
+    right: 2rem !important;
+    bottom: 2rem !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: 1002;
+  }
+} 
+@media (max-width: 600px) {
+    .circle-btn.next-btn {
+      position: fixed !important;
+      right: 5rem !important;
+      bottom: 2rem !important;
+      left: auto !important;
+      top: auto !important;
+      z-index: 1002;
+    }
+  } 

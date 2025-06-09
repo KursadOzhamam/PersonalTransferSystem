@@ -1,0 +1,107 @@
+.step-two-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 3rem 1rem;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.reset-logo {
+    margin-top: 5rem;
+  width: 130px;
+  margin-bottom: 1rem;
+}
+
+.reset-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.reset-subtext {
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.step-two-form {
+  text-align: left;
+}
+
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.rules-list li {
+  margin-bottom: 0.25rem;
+  padding-left: 1.4em;
+  position: relative;
+}
+
+.rules-list li.valid::before {
+  content: '✔';
+  color: green;
+  position: absolute;
+  left: 0;
+}
+
+.rules-list li.invalid::before {
+  content: '✖';
+  color: red;
+  position: absolute;
+  left: 0;
+}
+
+.toggle-visibility {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+.reset-btn {
+  background-color: #7f9cf5;
+  border: none;
+  font-weight: bold;
+}
+
+.reset-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.reset-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+}
+/* Renkli ikon stil farkı için */
+.valid {
+  color: green;
+}
+.invalid {
+  color: red;
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.two-column-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+@media (max-width: 600px) {
+  .two-column-list {
+    grid-template-columns: 1fr;
+  }
+}

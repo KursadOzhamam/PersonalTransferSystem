@@ -1,0 +1,220 @@
+.preference-modal-wrapper {
+  width: 100%;
+  padding: 2rem;
+  height: auto;
+  overflow-y: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.scrollable-content {
+  /* overflow-y: unset; max-height: unset; */
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge {
+  background: #ff5b00;
+  color: white;
+  padding: 1rem !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  border-radius: 16px !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.preference-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.preference-list li {
+  list-style: none;
+}
+.section select,
+.section textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.summary {
+  list-style: disc;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  text-align: start;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 1rem;
+}
+
+.preference-item {
+  background: #f8f9fa;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s, background 0.2s;
+  cursor: grab;
+}
+.preference-item:hover, .preference-item:focus {
+  background: #e3e9f7;
+  box-shadow: 0 4px 16px rgba(98,135,250,0.15);
+  outline: none;
+}
+.preference-item.dragging {
+  opacity: 0.7;
+  background: #dbeafe;
+  box-shadow: 0 8px 24px rgba(98,135,250,0.25);
+}
+
+@media (max-width: 1390px) {
+  .preference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preference-modal-wrapper {
+    padding: 1rem;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin-top: 5rem;
+  }
+
+  .badge {
+    font-size: 12px !important;
+    padding: 0.8rem !important;
+    border-radius: 12px !important;
+  }
+
+  .summary li {
+    font-size: 0.9rem;
+  }
+
+  .modal-submit {
+    width: auto;
+    justify-content: center;
+  }
+
+  .modal-back,
+  .modal-close {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 1392px) {
+  .responsive-order {
+    display: flex;
+    flex-direction: column;
+  }
+  .section-bolge { order: 1; }
+  .section-ililce { order: 2; }
+  .section-mazeret { order: 3; }
+  .ek-ekle-row { order: 4; }
+  .section-tercihler { order: 5; }
+  .section-ozet { order: 6; }
+  .dipnot { order: 7; }
+  .devam-btn-row {
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    bottom: 2rem;
+    z-index: 1001;
+    justify-content: center !important;
+    display: flex;
+    background: none;
+  }
+  .preference-modal-wrapper .devam-btn,
+  .preference-modal-wrapper .circle-btn.next-btn {
+    position: relative !important;
+    right: unset !important;
+    left: unset !important;
+    bottom: unset !important;
+    margin: 0 auto !important;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.preference-modal-wrapper .circle-btn.next-btn {
+  right: 5rem;
+}
+
+.tercih-listesi-border {
+  border: 2px solid #d1d5db;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  padding: 2rem 2.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  background: #fff;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .tercih-listesi-border {
+    padding: 1rem 0.5rem;
+    border-radius: 12px;
+  }
+}
+
+h5.bg-light {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 18px;
+}
+
+@media (max-width: 600px) {
+  h5.bg-light {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 12px;
+  }
+}
+
+.devam-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  position: static;
+  background: none;
+}
+
+.preference-modal-wrapper .devam-btn {
+  position: static;
+  right: unset;
+  bottom: unset;
+}
