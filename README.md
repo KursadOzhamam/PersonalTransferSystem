@@ -66,15 +66,60 @@ npm run dev
 
 ```
 src/
-├── assets/          # İkonlar ve görseller
-├── components/modals# Ortak bileşenler
-├── data/            # JSON veri dosyaları
-├── pages/           # Giriş, şifre sıfırlama vb. sayfalar
-├── views/           # Profil, talepler, izinler vb.
-├── App.jsx          # Ana bileşen
-├── main.jsx         # Başlatıcı dosya
-└── index.css        # Global stiller
-```
+PersonalTransferSystem/
+├── User Guide for the PersonalTransferSystem.pdf
+├── Personel Transfer Project.fig
+└── PersonalTransferSystem/
+    ├── index.html
+    ├── vite.config.js
+    ├── FrontendProjesiKullanımKlavuzu.pdf
+    ├── README.md
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    ├── eslint.config.js
+    └── node_modules/
+        ├── tinyglobby/
+        │   ├── LICENSE
+        │   ├── README.md
+        │   ├── package.json
+        │   └── dist/
+        │       ├── index.d.mts
+        │       ├── index.js
+        │       ├── index.mjs
+        │       └── index.d.ts
+        ├── callsites/
+        │   ├── license
+        │   ├── index.js
+        │   ├── readme.md
+        │   ├── package.json
+        │   └── index.d.ts
+        ├── react-toastify/
+        │   ├── LICENSE
+        │   ├── README.md
+        │   ├── package.json
+        │   └── dist/
+        │       ├── ReactToastify.css
+        │       ├── index.js
+        │       ├── index.mjs
+        │       ├── unstyled.js
+        │       └── ...
+        ├── jsesc/
+        │   ├── jsesc.js
+        │   ├── LICENSE-MIT.txt
+        │   ├── README.md
+        │   └── package.json
+        └── @types/
+            ├── react-transition-group/
+            │   ├── TransitionGroup.d.ts
+            │   ├── CSSTransition.d.ts
+            │   └── ...
+            ├── babel__template/
+            ├── react-dom/
+            ├── warning/
+            ├── babel__generator/
+            └── babel__traverse/
+
 
 ---
 
