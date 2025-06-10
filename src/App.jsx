@@ -7,6 +7,7 @@ import ResetPassword from "./features/auth/ResetPassword";
 import PersonnelInfo from "./pages/PersonnelInfo"; 
 import AdminLogin from "./features/dashboard/AdminLogin";
 import AdminDashboard from "./features/dashboard/AdminDashboard";
+import NotFound from "./pages/NotFound";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from './components/shared/PrivateRoute';
@@ -30,6 +31,9 @@ function App() {
 
         {/* Admin giriş ekranı korumasız olabilir */}
         <Route path="/admin" element={<AdminLogin />} />
+
+        {/* 404 - Sayfa Bulunamadı */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <ToastContainer
