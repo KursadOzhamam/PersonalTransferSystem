@@ -55,7 +55,7 @@ Proje kapsamında ayrıca **izin talepleri ekranı**, **profil görüntüleme**,
 
 ```bash
 git clone [(https://github.com/KursadOzhamam/PersonalTransferSystem.git)]
-cd personel-transfers
+cd PersonalTransferSystem
 npm install
 npm run dev
 ```
